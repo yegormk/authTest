@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiBaseService } from '../services/api-base.service';
 
 @Component({
   selector: 'app-authorization',
@@ -13,7 +14,7 @@ export class AuthorizationComponent implements OnInit {
   });
   hide = true;
 
-  constructor() {}
+  constructor(private auth: ApiBaseService) {}
 
   ngOnInit(): void {
     console.log('Working');
@@ -22,6 +23,10 @@ export class AuthorizationComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log('Auth component: ', this.loginForm.value);
+      this.auth.login(this.loginForm.value).subscribe(
+        res => console.log(res),
+        err => console.log(err),
+      );
     }
   }
 }
