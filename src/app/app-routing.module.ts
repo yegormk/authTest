@@ -3,13 +3,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssesReportsComponent } from './asses-reports/asses-reports.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { AppComponent } from './app.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { GraphComponent } from './graph/graph.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/userassessments',
+    redirectTo: '/homepage',
     pathMatch: 'full',
+  },
+  {
+    path: 'homepage',
+    component: HomePageComponent,
   },
   {
     path: 'userassessments',
@@ -18,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'users',
     component: AdminPanelComponent,
+  },
+  {
+    path: 'graph',
+    component: GraphComponent,
   },
 ];
 

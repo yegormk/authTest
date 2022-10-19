@@ -1,8 +1,6 @@
 <main class="main">
   <div class="menu">
     <mat-nav-list>
-<!--      <a mat-list-item (click)="openAuthForm()">Assessment reports</a>-->
-<!--      <mat-divider></mat-divider>-->
       <a routerLink="/userassessments" routerLinkActive="active" mat-list-item>Assessment Reports</a>
       <mat-divider></mat-divider>
       <a routerLink="/users" mat-list-item >Administration section</a>
@@ -18,13 +16,6 @@
   </div>
 
   <div class="content">
-    <!--<app-authorization></app-authorization>-->
-<!--    <h1>Welcome to dashboard!</h1>-->
-<!--    <p>-->
-<!--      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, dolore, quae? Corporis dolor eaque ex-->
-<!--      explicabo hic molestias neque nobis nulla officiis perferendis quaerat, quod suscipit unde vitae voluptate-->
-<!--      voluptatum. Lorem ipsum dolor sit amet.-->
-<!--    </p>-->
     <router-outlet></router-outlet>
   </div>
 </main>

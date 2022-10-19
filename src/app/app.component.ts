@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorizationComponent } from './authorization/authorization.component';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
