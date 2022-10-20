@@ -12,3 +12,15 @@
   transition: .4s;
   background-color: #dadada;
 }
+
+.headerAsses {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.imageAsses{
+  max-width: 90%;
+}

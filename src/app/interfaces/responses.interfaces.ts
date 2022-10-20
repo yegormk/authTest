@@ -10,7 +10,7 @@ export interface loginForm {
   password: string;
 }
 
-export interface userAssesment {
+export interface userAssessment {
   id: number;
   name: string;
   users_resolved: number;

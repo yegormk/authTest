@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorizationComponent } from './authorization/authorization.component';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +11,11 @@ export class AppComponent implements OnInit {
   constructor(public form: MatDialog) {}
 
   ngOnInit() {
-    this.openAuthForm();
+    localStorage.removeItem('todo');
+    console.log(localStorage.getItem('user'));
+    if (localStorage.getItem('token') === '') {
+      this.openAuthForm();
+    }
   }
 
   openAuthForm() {
@@ -24,5 +27,9 @@ export class AppComponent implements OnInit {
         console.log(`Dialog password: ${result.password}`);
       }
     });
+  }
+
+  isAdmin() {
+    return localStorage.getItem('role') === 'Admin';
   }
 }

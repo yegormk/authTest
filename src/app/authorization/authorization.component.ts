@@ -29,7 +29,7 @@ export class AuthorizationComponent implements OnInit {
       this.auth.login({ email: this.loginForm.value.email, password: this.loginForm.value.password }).subscribe(
         res => {
           console.log(res.token);
-          this.router.navigate(['/userassessments']);
+          this.router.navigate(['']);
         },
         err => console.log(err)
       );

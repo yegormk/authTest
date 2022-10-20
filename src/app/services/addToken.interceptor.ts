@@ -8,7 +8,7 @@
 //   constructor(private auth: ApiBaseService) {}
 //
 //   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-//     if (this.auth.isAuth()) {
+//     if (this.auth.isLoggedIn()) {
 //       req = req.clone({
 //         setHeaders: {
 //           'X-Token': '' + this.auth.getToken(),

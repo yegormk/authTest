@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiBaseService } from '../services/api-base.service';
-import { Observable, Subscription } from 'rxjs';
-import { userAssesment, userGraph } from '../interfaces/responses.interfaces';
-import {Router} from "@angular/router";
+
+import { userAssessment } from '../interfaces/responses.interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-asses-reports',
@@ -10,21 +10,19 @@ import {Router} from "@angular/router";
   styleUrls: ['./asses-reports.component.css'],
 })
 export class AssesReportsComponent implements OnInit {
-  assesments!: userAssesment[];
-  graphData!: userGraph;
+  assessments!: userAssessment[];
 
   constructor(private service: ApiBaseService, private router: Router) {}
 
-  ngOnInit(): void {}
-
-  loadAssesments(): void {
-    this.service.getAssesments().subscribe(
-      res => {
-        console.log(res);
-        this.assesments = res;
-      },
-      err => console.log(err)
-    );
+  ngOnInit(): void {
+    if (localStorage.getItem('token') !== null) {
+      this.service.getAssessments().subscribe(
+        res => {
+          this.assessments = res;
+        },
+        err => console.log(err)
+      );
+    }
   }
 
   openGraph(id: number): void {
@@ -36,5 +34,10 @@ export class AssesReportsComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  logOut() {
+    this.service.logOut();
+    this.router.navigate(['/home']);
   }
 }

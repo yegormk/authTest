@@ -1,14 +1,15 @@
-<p>asses-reports works!</p>
-<button mat-raised-button (click)="loadAssesments()">
-  <h1>Hey</h1>
-  <p>Hello World</p>
-</button>
+<div class="headerAsses">
+  <p class="welcomeHeaderAsses">Welcome to dashboard!</p>
+  <button mat-raised-button (click)="logOut()">
+    Log out
+  </button>
+</div>
 
-<div *ngIf="assesments">
-  <div class="assesReport" (click)="openGraph(asses.id)" *ngFor="let asses of assesments">
+<div *ngIf="assessments">
+  <div class="assesReport" (click)="openGraph(asses.id)" *ngFor="let asses of assessments">
     <h3>Name: {{ asses.name }}</h3>
     <p>Id: {{ asses.id }}</p>
     <p>Active: {{ asses.active }}</p>
-    <img [src]="asses.image_url">
+    <img class="imageAsses" [src]="asses.image_url">
   </div>
 </div>

@@ -4,29 +4,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { AssesReportsComponent } from './asses-reports/asses-reports.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomePageComponent } from './home-page/home-page.component';
+
 import { GraphComponent } from './graph/graph.component';
+import { AuthGuard } from './shared/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/homepage',
-    pathMatch: 'full',
-  },
-  {
-    path: 'homepage',
-    component: HomePageComponent,
-  },
-  {
-    path: 'userassessments',
     component: AssesReportsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'home',
+    component: HomePageComponent,
   },
   {
     path: 'users',
     component: AdminPanelComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'graph',
     component: GraphComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

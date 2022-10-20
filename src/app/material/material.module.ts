@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
 
 export const materialModules = [
   MatButtonModule,
@@ -15,6 +16,7 @@ export const materialModules = [
   MatDialogModule,
   MatDividerModule,
   MatListModule,
+  MatTableModule,
 ];
 
 @NgModule({

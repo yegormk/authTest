@@ -1,17 +1,9 @@
 <main class="main">
   <div class="menu">
     <mat-nav-list>
-      <a routerLink="/userassessments" routerLinkActive="active" mat-list-item>Assessment Reports</a>
+      <a routerLink="" routerLinkActive="active" mat-list-item>Assessment Reports</a>
       <mat-divider></mat-divider>
-      <a routerLink="/users" mat-list-item >Administration section</a>
-
-<!--      <mat-list-item>-->
-<!--        <button (click)="openAuthForm()" mat-raised-button color="primary">Primary</button>-->
-<!--      </mat-list-item>-->
-<!--      <mat-divider></mat-divider>-->
-<!--      <mat-list-item>-->
-<!--        <button (click)="openAuthForm()" mat-raised-button color="primary">Primary</button>-->
-<!--      </mat-list-item>-->
+      <a routerLink="/users" mat-list-item *ngIf="isAdmin()">Administration section</a>
     </mat-nav-list>
   </div>
 
