@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { userAssessment } from '../interfaces/responses.interfaces';
+import { listOfUsers } from '../interfaces/responses.interfaces';
+import { ApiBaseService } from '../services/api-base.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -8,14 +9,19 @@ import { userAssessment } from '../interfaces/responses.interfaces';
   styleUrls: ['./admin-panel.component.css'],
 })
 export class AdminPanelComponent implements OnInit {
-  constructor() {}
-  displayedColumns: string[] = ['id', 'name', 'active'];
-  dataSource!: userAssessment[];
+  constructor(private service: ApiBaseService) {}
+  displayedColumns: string[] = ['first_name', 'last_name', 'email', 'groups', 'deleteButtons'];
+  dataSource!: listOfUsers[];
 
   ngOnInit(): void {
-    if (localStorage.getItem('role') === 'Admin') {
-      this.dataSource = JSON.parse(localStorage.getItem('userAsses') || '');
+    if (localStorage.getItem('role') === 'Admin' && localStorage.getItem('listOfUsers') === null) {
+      this.service.getUsers().subscribe();
     }
-    console.log(JSON.parse(localStorage.getItem('userAsses') || ''));
+    this.dataSource = JSON.parse(localStorage.getItem('listOfUsers') || '');
+  }
+
+  deleteUser(element: any) {
+    this.dataSource = this.dataSource.filter(e => e !== element);
+    localStorage.setItem('listOfUsers', JSON.stringify(this.dataSource));
   }
 }

@@ -27,3 +27,10 @@ export interface userGraph {
   };
   type: string;
 }
+
+export interface listOfUsers {
+  first_name: string;
+  last_name: string;
+  email: string;
+  groups: string[];
+}

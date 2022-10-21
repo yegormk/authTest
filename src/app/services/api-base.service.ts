@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { currentUser, loginForm, userAssessment, userGraph } from '../interfaces/responses.interfaces';
+import {currentUser, listOfUsers, loginForm, userAssessment, userGraph} from '../interfaces/responses.interfaces';
 import { tap } from 'rxjs';
 
 @Injectable({
@@ -41,6 +41,17 @@ export class ApiBaseService {
     );
   }
 
+  getUsers() {
+    console.log('GetUsers() called');
+    const headers = new HttpHeaders().set('X-Token', this.getToken());
+    return this.http.get<listOfUsers[]>(`${this.urlApi}users`, { headers }).pipe(
+      tap((listOfUsers: listOfUsers[]) => {
+        console.log(listOfUsers);
+        localStorage.setItem('listOfUsers', JSON.stringify(listOfUsers));
+      })
+    );
+  }
+
   getToken() {
     return localStorage.getItem('token') || '';
   }
@@ -53,5 +64,6 @@ export class ApiBaseService {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('userAsses');
+    localStorage.removeItem('listOfUsers');
   }
 }
