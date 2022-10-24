@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {currentUser, listOfUsers, loginForm, userAssessment, userGraph} from '../interfaces/responses.interfaces';
+import { currentUser, listOfUsers, loginForm, userAssessment, userGraph } from '../interfaces/responses.interfaces';
 import { tap } from 'rxjs';
 
 @Injectable({
@@ -23,8 +23,7 @@ export class ApiBaseService {
   }
 
   getAssessments() {
-    const headers = new HttpHeaders().set('X-Token', this.getToken());
-    return this.http.get<userAssessment[]>(`${this.urlApi}userassessments`, { headers }).pipe(
+    return this.http.get<userAssessment[]>(`${this.urlApi}userassessments`).pipe(
       tap((userAsses: userAssessment[]) => {
         localStorage.setItem('userAsses', JSON.stringify(userAsses));
       })
@@ -32,9 +31,8 @@ export class ApiBaseService {
   }
 
   getGraph(id: string) {
-    const headers = new HttpHeaders().set('X-Token', this.getToken());
     let params = new HttpParams().append('id', id);
-    return this.http.get<userGraph>(`${this.urlApi}userassessment/graph`, { headers: headers, params: params }).pipe(
+    return this.http.get<userGraph>(`${this.urlApi}userassessment/graph`, { params: params }).pipe(
       tap((userAsses: userGraph) => {
         console.log(userAsses);
       })
@@ -42,7 +40,6 @@ export class ApiBaseService {
   }
 
   getUsers() {
-    console.log('GetUsers() called');
     const headers = new HttpHeaders().set('X-Token', this.getToken());
     return this.http.get<listOfUsers[]>(`${this.urlApi}users`, { headers }).pipe(
       tap((listOfUsers: listOfUsers[]) => {

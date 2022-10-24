@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiBaseService } from '../services/api-base.service';
 
-import { userAssessment } from '../interfaces/responses.interfaces';
+import { listOfUserAssessments, userAssessment } from '../interfaces/responses.interfaces';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-asses-reports',
@@ -12,7 +13,10 @@ import { Router } from '@angular/router';
 export class AssesReportsComponent implements OnInit {
   assessments!: userAssessment[];
 
-  constructor(private service: ApiBaseService, private router: Router) {}
+  constructor(
+    private service: ApiBaseService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token') !== null) {

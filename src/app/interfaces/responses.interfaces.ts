@@ -18,6 +18,11 @@ export interface userAssessment {
   image_url: string;
 }
 
+export interface listOfUserAssessments {
+  pending: boolean;
+  listOfAssessments: userAssessment[];
+}
+
 export interface userGraph {
   data: {
     Agreeableness: number;

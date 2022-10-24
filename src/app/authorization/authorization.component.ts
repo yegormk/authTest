@@ -25,7 +25,6 @@ export class AuthorizationComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Auth component: ', this.loginForm.value);
       this.auth.login({ email: this.loginForm.value.email, password: this.loginForm.value.password }).subscribe(
         res => {
           console.log(res.token);
