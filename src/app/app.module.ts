@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { StoreModule } from '@ngrx/store';
+import { ActionReducerMap, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
@@ -16,7 +17,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { GraphComponent } from './graph/graph.component';
 import { TokenInterceptor } from './services/addToken.interceptor';
 import { reducers, metaReducers } from './reducers';
-import { EffectsModule } from '@ngrx/effects';
+import { CatGalleryEffects } from './store/auth.effects';
+import { login } from './store/auth.reducers';
+
+const loginReducerMap: ActionReducerMap<any> = {
+  currentUser: login,
+};
 
 @NgModule({
   declarations: [
@@ -34,10 +40,11 @@ import { EffectsModule } from '@ngrx/effects';
     MaterialModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(loginReducerMap),
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CatGalleryEffects]),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent],

@@ -46,12 +46,12 @@ export const login = createReducer(
       token: userData.token,
     };
   }),
-  on(AuthActions.loginFailure, (state, { error }) => {
-    return {
-      ...state,
-      error: error,
-    };
-  }),
+  // on(AuthActions.loginFailure, (state, { error }) => {
+  //   return {
+  //     ...state,
+  //     error: error,
+  //   };
+  // }),
 );
 
 // export const getGraph = createReducer(
